@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Ship_Controller : MonoBehaviour
 {
+    public Rigidbody rigidBody;
+
+
     private bool leftTurn = false;
     void Start()
     {
-        
+        rigidBody = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -15,11 +18,12 @@ public class Ship_Controller : MonoBehaviour
         PlayerInput();
     }
 
-    private static void PlayerInput()
+    private void PlayerInput()
     {
         if (Input.GetKey(KeyCode.Space))
         {
             print("THRUSTERS ENGAGED");
+            rigidBody.AddRelativeForce(Vector3.up);
         }
 
 
